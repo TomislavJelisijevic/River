@@ -11,6 +11,14 @@
 |
 */
 
+use App\Submission;
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'submissions' => Submission::all()
+    ]);
 });
+
+Route::get('submissions/createForm', 'SubmissionController@createForm');
+Route::post('submissions/store', 'SubmissionController@store');
+Route::get('submissions/all', 'SubmissionController@all');
